@@ -1,0 +1,26 @@
+﻿<html>
+{% load staticfiles %}
+<head>
+    <title>Моя первая страничка</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <link rel="stylesheet" type="text/css" href="{% static 'Stilee.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+<h3 id="site">Добро пожаловать на первый сайт!</h3>
+
+<img src="{% static 'DSC01827.JPG' %}" id="picture">
+
+<header class="header">
+    <div class="headermenu">
+        <ul class="nav_header">
+            <li><a href="http://localhost:8000/index3.html" class="nav_header_text">Обо мне</a></li>
+            <li><a href="https://photos.google.com/share/AF1QipOjtYvBbzxq7GaT6DRGl5wj5g2I5f3EUb51qXQ4BLrg4AMHTJfSpUE1UNTJpdFcgg?key=Vk1WSXBXWEZORGVOeE9RWDNxNnZIU1d6Q1BqYWNB" class="nav_header_text" class="nav_header_text">Галерея</a></li>
+            <li><a href="http://localhost:8000/index2.html" class="nav_header_text" id="second_page">Вторая страница</a></li>
+            <li><a href="#" class="nav_header_text">Настройки</a></li>
+        </ul>
+    </div>
+</header>
+
+</body>
+</html>
