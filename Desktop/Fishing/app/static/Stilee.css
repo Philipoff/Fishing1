@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+ /* Надпись приветствия */
+#site{
+    left:100px;
+    text-align: center;
+    color: light-gray;
+    margin: 20px;
+    font-size: 50px;
+    position: relative;
+    border: 100px;
+}
+
+ /* Картинка пони */
+#picture{
+    height: 500px;
+    position: relative;
+    left: 30%;
+}
+
+/* Надпись приз */
+#congr{
+font-size: 30px;
+text-align:center
+}
+
+/* А где это? */
+#place{
+text-align: center;
+font-size: 40px;
+display:block;
+background:gray;
+margin-left: 40%;
+border: 1px solid black;
+border-radius: 120px;
+box-shadow:20px;
+width: 300px;
+color: black;
+opacity:0.92;
+}
+
+#place:hover{
+border: 2px solid black;
+opacity: 1;
+}
