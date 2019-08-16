@@ -1,0 +1,20 @@
+{% block title %}Добавить курс{% endblock %}
+
+{% block content %}
+<a href="/course">Назад</a>
+<h1>Добавить</h1>
+
+{% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка! </strong>{{ message }}
+    </div>
+{% endfor %}
+
+<form action="/addcourse" method="post">
+    {% csrf_token %}
+    <strong>Направление: </strong> <input class="form-control" type="text" name="name"/><br>
+    <strong>Учитель: </strong> <input class="form-control" type="text" name="teacher"/><br>
+    <strong>О курсе: </strong> <input class="form-control" type="text" name="about" value="{{ course.about }}"/><br>
+    <input type="submit" value="Добавить">
+</form>
+{% endblock %}

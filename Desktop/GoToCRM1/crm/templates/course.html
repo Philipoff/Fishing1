@@ -1,0 +1,17 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+{% extends 'courses.html' %}
+
+{% block title %}Информация о курсе{%  endblock %}
+
+{% block content %}
+<a href="/courses">Назад</a>
+<h1>Курс: {{ course.name }}</h1>
+<h1>Преподаватель: {{ course.teacher }}</h1>
+<br>
+<p>
+    {{ course.about }}
+</p>
+<a href="/editcourse?id={{ course.id }}">Изменить</a>
+{% endblock %}

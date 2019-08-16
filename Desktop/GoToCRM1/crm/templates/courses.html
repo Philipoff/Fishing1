@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% extends 'base.html' %}
+    {% block title %}Направления{% endblock %}
+    <meta charset="UTF-8">
+    <title>Курсы</title>
+</head>
+
+<body class="container-fluid">
+{% block content %}
+
+<h1>Курсы</h1>
+
+<ul>
+    {% for course in courses %}
+        <li><a href="/course?id={{ course.id }}">{{ course.name }}</a></li>
+    {% endfor %}
+</ul>
+<a href="/addcourse">Добавить курс</a>
+{% endblock %}
+</body>
+</html>

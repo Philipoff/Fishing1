@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Участники{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="static/search.js"></script>
+</head>
+<body class="container-fluid">
+<a href="/add">Добавить</a>
+<h1>Участники</h1>
+    <strong>Начните вводить имя: </strong>
+
+<form class="form-inline my-2 my-lg-0">
+    <input type="search" placeholder="Введите имя человека" aria-label="Search" name="search" >
+    <button type="submit">Search</button>
+</form>
+<hr>
+<ul class="container">
+    {% for student in students %}
+        <li><a href="/student?id={{ student.id }}">
+            {{ student.name }} {{ student.surname }}</a>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+{% endblock %}

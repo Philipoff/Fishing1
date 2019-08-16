@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{%  block title %}Добавить участника{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<a href="/course?id={{ course.id }}">Назад</a>
+
+{% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка! </strong>{{ message }}
+    </div>
+{% endfor %}
+
+<h1>Изменить: {{ course.name }}</h1>
+
+<form action="/editcourse?id={{ course.id }}" method="post">
+    {% csrf_token %}
+    <strong>Направление: </strong> <input class="form-control" type="text" name="name" value="{{ course.name }}"/><br>
+    <strong>Учитель: </strong> <input class="form-control" type="text" name="teacher" value="{{ course.teacher }}"/><br>
+    <strong>О курсе: </strong> <input class="form-control" type="text" name="about" value="{{ course.about }}"/><br>
+    <input type="submit" value="Сохранить">
+</form>
+{% endblock %}

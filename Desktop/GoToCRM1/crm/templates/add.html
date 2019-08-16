@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить участника{% endblock %}
+
+{% block content %}
+<a href="/">Назад</a>
+<h1>Добавить</h1>
+
+{% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка! </strong>{{ message }}
+    </div>
+{% endfor %}
+
+<form action="/add" method="post">
+    {% csrf_token %}
+    <strong>Имя: </strong> <input class="form-control" type="text" name="name"/><br>
+    <strong>Фамилия: </strong> <input class="form-control" type="text" name="surname"/><br>
+    <strong>E-mail: </strong> <input class="form-control" type="email" name="email" value="{{ student.email }}"/><br>
+    <strong>Комната: </strong> <input class="form-control" type="text" name="room" value="{{ student.room }}"/><br>
+    <strong>Направление:</strong>
+    <select name="course_id" class="form-control">
+        <option value="">Нет</option>
+        {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <strong>О себе: </strong> <input class="form-control" type="text" name="about" value="{{ student.about }}"/><br>
+    <input type="submit" value="Добавить">
+</form>
+{% endblock %}

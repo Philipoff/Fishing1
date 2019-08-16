@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="static/bootstrap.min.js"> </script>
+    <meta charset="UTF-8">
+    <title>GoToCRM: {% block title %}{% endblock %}</title>
+</head>
+<body>
+<a href="/">Участники</a>
+<a href="/courses">Направления</a>
+<a href="/logout" style="color: black">Выйти</a>
+<hr>
+{% block content %}
+{% endblock %}
+</body>
+</html>

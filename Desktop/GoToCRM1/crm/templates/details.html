@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+{% extends 'base.html' %}
+
+{% block title %}Информация об участнике{%  endblock %}
+
+{% block content %}
+<a href="/">Назад</a>
+<a href="/edit?id={{ student.id }}">Изменить</a>
+<a href="/delete?id={{ student.id }}" onclick="return confirm('Точно удалить?')">Удалить</a>
+<h1>{{ student.name }} {{ student.surname }}</h1>
+<ul>
+    <li><strong>Email:</strong> {{ student.email }}</li>
+    <li><strong>Комната:</strong> {{ student.room }}</li>
+    <li><strong>Направление:</strong> {{ student.course.name }}</li>
+    <li><strong>Преподаватель:</strong> {{ student.course.teacher }}</li>
+    <li><strong>О себе:</strong> {{ student.about }}</li>
+</ul>
+<br>
+<h5>Комментарии пользователей:</h5>
+<strong>Вы вошли под аккаунтом {{ request.user }}</strong>
+<form action="/student?id={{ student.id }}" method="post">
+    {% csrf_token %}
+    <input class="form-control" type="text" name="text" value="Оставьте свой комментарий..."/><br>
+    <input type="submit" value="Добавить">
+</form>
+<hr>
+{% for comment in comments %}
+    <h5><option value="{{ comment.id }}">{{ comment.name }} пишет:</option></h5>
+    <option value="{{ comment.id }}">{{ comment.text }}</option>
+    <hr>
+{% endfor %}
+
+{% endblock %}
