@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить участника{% endblock %}
+
+{% block content %}
+<a href="/">Назад</a>
+<h1>Добавить</h1>
+
+{% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка! </strong>{{ message }}
+    </div>
+{% endfor %}
+
+<form action="/add" method="post">
+    {% csrf_token %}
+    <strong>Название жалобы: </strong> <input class="form-control" type="text" name="name"/><br>
+    <strong>Опишите проблему: </strong> <input class="form-control" type="text" name="about"/><br>
+    <strong>Домик: </strong> <input class="form-control" type="text" name="room"/><br>
+    <input type="submit" value="Добавить">
+</form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%  block title %}Добавить участника{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<a href="/panel">Назад</a>
+
+{% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка! </strong>{{ message }}
+    </div>
+{% endfor %}
+
+<h1>Изменить: {{ problem.name }}</h1>
+{% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка! </strong>{{ message }}
+    </div>
+{% endfor %}
+<form action="/edit?id={{ problem.id }}" method="post">
+    {% csrf_token %}
+    <strong>Решающий проблему: </strong> <input class="form-control" type="text" name="helper" value="{{ request.user }}"/><br>
+    <strong>Проблема решена: </strong> <input type="checkbox" name="closed"/><br>
+    <input type="submit" value="Сохранить">
+</form>
+{% endblock %}
