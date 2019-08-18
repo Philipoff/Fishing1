@@ -150,15 +150,14 @@ def archive(request):
 def makelike(request):
     id = request.GET.get('id')
     if request.user.is_authenticated:
-        video_item = Like.objects.get(id=id)
-        user_tags = User.objects.filter(users_video_main=id)
+        user_tags = User.objects.filter(users_like_main=id)
         current_user = request.user
         if current_user not in user_tags:
             try:
-                video_item = Like.objects.get(id=id)
-                video_item.thumbnumber += 1
-                video_item.likedone.add(current_user)
-                video_item.save()
+                like = Like.objects.get(id=id)
+                like.thumbnumber += 1
+                like.likedone.add(current_user)
+                like.save()
                 return redirect('/problem?id={}'.format(id))
             except ObjectDoesNotExist:
                 return redirect('/problem?id={}'.format(id))
