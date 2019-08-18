@@ -28,5 +28,6 @@ urlpatterns = [
     path('register', register),
     path('login', login_page),
     path('logout', logout_page),
-    path('myproblems', myproblems)
+    path('myproblems', myproblems),
+    path('makelike', makelike)
 ]

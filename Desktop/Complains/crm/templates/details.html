@@ -6,6 +6,13 @@
 {% block title %}Информация об участнике{%  endblock %}
 
 {% block content %}
+
+{% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка! </strong>{{ message }}
+    </div>
+{% endfor %}
+
 <a href="/">Назад</a>
 <h1>{{ problem.name }}</h1>
 <ul>
@@ -17,6 +24,7 @@
     {% else %}
         <li><strong>Проблема решена:</strong> Нет</li>
     {% endif %}
+    <p>Количество лайков: {{ problem.likes.thumbnumber }}</p> <a href="makelike?id={{ problem.id }}">Поставить лайк</a>
 </ul>
 <br>
 

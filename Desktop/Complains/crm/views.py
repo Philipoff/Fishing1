@@ -52,6 +52,9 @@ def add(request):
         problem.room = room
         problem.about = about
         problem.creator = creator
+        like = Like()
+        like.save()
+        problem.likes = like
         problem.save()
 
         return redirect('/problem?id={}'.format(problem.id))
@@ -110,16 +113,12 @@ def myproblems(request):
 def edit(request):
     if not request.user.is_authenticated:
         return redirect('/login')
-
+    id = request.GET.get('id')
+    problem = Problem.objects.get(pk=id)
     if request.method == 'GET':
-        id = request.GET.get('id')
-        problem = Problem.objects.get(pk=id)
         return render(request, 'edit.html', {'problem': problem})
 
     if request.method == 'POST':
-        id = request.GET.get('id')
-        problem = Problem.objects.get(pk=id)
-
         helper = request.POST.get('helper')
         closed = request.POST.get('closed')
 
@@ -146,3 +145,24 @@ def archive(request):
 
     problems = Problem.objects.all().filter(closed='on')
     return render(request, 'archive.html', {'problems': problems})
+
+
+def makelike(request):
+    id = request.GET.get('id')
+    if request.user.is_authenticated:
+        video_item = Like.objects.get(id=id)
+        user_tags = User.objects.filter(users_video_main=id)
+        current_user = request.user
+        if current_user not in user_tags:
+            try:
+                video_item = Like.objects.get(id=id)
+                video_item.thumbnumber += 1
+                video_item.likedone.add(current_user)
+                video_item.save()
+                return redirect('/problem?id={}'.format(id))
+            except ObjectDoesNotExist:
+                return redirect('/problem?id={}'.format(id))
+        else:
+            return redirect('/problem?id={}'.format(id))
+    else:
+        return redirect('/problem?id={}'.format(id))
