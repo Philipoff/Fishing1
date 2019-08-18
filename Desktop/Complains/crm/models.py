@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Like(models.Model):
     thumbnumber = models.IntegerField(default=0, help_text="Начинается с 0", verbose_name="Число лайков")
-    likedone = models.ManyToManyField(User, related_name='users_video_main', null=None)
+    likedone = models.ManyToManyField(User, related_name='users_like_main', null=None)
 
 
 class Problem(models.Model):
