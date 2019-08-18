@@ -150,7 +150,7 @@ def archive(request):
 def makelike(request):
     id = request.GET.get('id')
     if request.user.is_authenticated:
-        user_tags = User.objects.filter(users_like_main=id)
+        user_tags = User.objects.filter(likedone=id)
         current_user = request.user
         if current_user not in user_tags:
             try:
